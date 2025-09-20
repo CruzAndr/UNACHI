@@ -1,0 +1,26 @@
+{
+  "0": {
+    "id": "1751507466598",
+    "nombre": "isaac",
+    "email": "pokeranimu@gmail.com",
+    "contrasena": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "fechaCreacion": "2025-07-03T01:51:06.599Z",
+    "activo": true
+  },
+  "test@test.com": {
+    "id": 1,
+    "nombre": "Usuario de Prueba",
+    "email": "test@test.com",
+    "password": "$2b$10$Qb39aa.A2hMQv3BTzNoADu1TnsSz34J16V7KBXsKikd0tFtLLmgzO",
+    "fechaCreacion": "2025-07-03T07:24:15.715Z",
+    "activo": true
+  },
+  "pokeranimu@gmail.com": {
+    "id": 3,
+    "nombre": "isaac",
+    "email": "pokeranimu@gmail.com",
+    "password": "$2b$10$9FQomkiqwwC0wUdf0qshxu.KkPN9zELC8Ga0/PwoI11z6hAbqDv6W",
+    "fechaCreacion": "2025-07-03T07:24:29.405Z",
+    "activo": true
+  }
+}

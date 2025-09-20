@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golfito Tours - Reserva tu Aventura</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-busqueda {
+            background: linear-gradient(120deg, #2d5a27 60%, #4a7c59 100%), url('imagenes/golfito2.jpg') center/cover no-repeat;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: #fff;
+        }
+        .hero-busqueda .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(30, 61, 27, 0.55);
+            z-index: 1;
+        }
+        .hero-busqueda .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .hero-busqueda .logo-hero {
+            margin-bottom: 1.5rem;
+        }
+        .hero-busqueda .logo-hero img {
+            height: 70px;
+            width: auto;
+        }
+        .hero-busqueda h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .hero-busqueda p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        .buscador-tours {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+            padding: 18px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .buscador-tours select, .buscador-tours input {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 1rem;
+            min-width: 140px;
+        }
+        .buscador-tours button {
+            background: #2d5a27;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .buscador-tours button:hover {
+            background: #1e3d1b;
+        }
+        .ventajas-section {
+            background: #f7faf7;
+            padding: 48px 0 32px 0;
+        }
+        .ventajas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .ventaja {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            padding: 28px 24px;
+            max-width: 320px;
+            text-align: center;
+        }
+        .ventaja i {
+            font-size: 2.2rem;
+            color: #2d5a27;
+            margin-bottom: 0.7rem;
+        }
+        .ventaja h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .testimonios-section {
+            background: #eaf4ea;
+            padding: 40px 0 32px 0;
+        }
+        .testimonios-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .testimonio {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            padding: 24px 20px;
+            max-width: 320px;
+            text-align: left;
+        }
+        .testimonio .nombre {
+            font-weight: 700;
+            color: #2d5a27;
+        }
+        @media (max-width: 900px) {
+            .ventajas-grid, .testimonios-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .buscador-tours {
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--
+      Barra de navegación principal del sitio.
+      Permite acceder a las diferentes secciones y páginas.
+    -->
+    <nav class="navbar" id="barraNavegacion">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer;">
+                <img src="assets/logo.png" alt="Golfito Tours" style="height: 40px; width: auto; margin-right: 0.5rem;">
+                <span>Golfito Tours</span>
+            </div>
+            <div class="nav-menu" id="menuNavegacion">
+                <a href="index.html" class="nav-link active">Inicio</a>
+                <a href="naturaleza.html" class="nav-link">Naturaleza</a>
+                <a href="aventura.html" class="nav-link">Aventura</a>
+                <a href="playas.html" class="nav-link">Playas</a>
+                <a href="historia.html" class="nav-link">Historia</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="reserva.html" class="nav-link">Reserva</a>
+                <button class="btn-login" onclick="abrirModal('modalLogin')">
+                    <i class="fas fa-user"></i> Iniciar Sesión
+                </button>
+            </div>
+            <div class="hamburger" id="hamburguesa">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO con buscador -->
+    <section class="hero-busqueda">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="logo-hero">
+                <img src="assets/logo.png" alt="Golfito Tours">
+            </div>
+            <h1>Reserva tu aventura en Golfito</h1>
+            <p>Explora la naturaleza, playas y cultura del Golfo Dulce con los mejores tours de Costa Rica.</p>
+            <form id="formBuscadorTours">
+                <select id="buscadorCategoria">
+                    <option value="">Tipo de tour</option>
+                    <option value="naturaleza">Naturaleza</option>
+                    <option value="aventura">Aventura</option>
+                    <option value="playa">Playas</option>
+                    <option value="historia">Historia</option>
+                </select>
+                <input type="date" id="buscadorFecha" min="2024-07-01">
+                <input type="number" id="buscadorPersonas" min="1" max="20" placeholder="Personas">
+                <button type="submit"><i class="fas fa-search"></i> Buscar tours</button>
+            </form>
+            <div id="resultadosBuscador">
+              <!-- Aquí se insertan los resultados de la búsqueda con JS -->
+              <button id="btnToggleTours" class="btn btn-outline" style="display:none; margin: 18px auto 0 auto;">Ocultar resultados</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrusel de Fotos -->
+    <section class="foto-carousel-section">
+      <div class="container">
+        <div class="foto-carrusel-wrapper">
+          <button class="foto-carrusel-btn prev" id="fotoCarruselPrev" aria-label="Anterior">&#10094;</button>
+          <div class="foto-carrusel" id="carruselFotos">
+            <!-- Las imágenes del carrusel se cargarán aquí con JS -->
+          </div>
+          <button class="foto-carrusel-btn next" id="fotoCarruselNext" aria-label="Siguiente">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carrusel de Promociones (centrado, debajo del carrusel de imágenes) -->
+<section class="promo-carousel-section">
+  <div class="container">
+    <h2>Promociones especiales</h2>
+    <div class="promo-carrusel-wrapper">
+      <button class="promo-carrusel-btn prev" id="promoCarruselPrev" aria-label="Anterior">&#10094;</button>
+      <div class="promo-carrusel" id="carruselPromos">
+        <!-- Las tarjetas de promociones se cargarán aquí con JS -->
+      </div>
+      <button class="promo-carrusel-btn next" id="promoCarruselNext" aria-label="Siguiente">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+    <!-- Tours destacados -->
+    <section class="tours" id="tours">
+        <div class="container">
+            <h2>Tours destacados</h2>
+            <p class="section-subtitle">Las mejores experiencias de Golfito Tours</p>
+            <div class="tours-grid" id="cuadriculaTours">
+                <!-- Los tours destacados se cargan con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de fotos -->
+    <section class="galeria" id="galeria">
+        <div class="container">
+            <h2>Galería de experiencias</h2>
+            <div class="galeria-grid" id="galeriaFotos">
+                <!-- Las imágenes de la galería se cargarán aquí con JavaScript -->
+            </div>
+        </div>
+        <!-- Lightbox -->
+        <div id="lightboxGaleria" class="lightbox-galeria" style="display:none;">
+            <span class="close-lightbox" onclick="cerrarLightboxGaleria()">&times;</span>
+            <img id="lightboxImagen" src="" alt="Foto de galería">
+        </div>
+    </section>
+
+    <!-- Ventajas -->
+    <section class="ventajas-section">
+        <div class="container">
+            <h2>¿Por qué reservar con Golfito Tours?</h2>
+            <div class="ventajas-grid">
+                <div class="ventaja">
+                    <i class="fas fa-award"></i>
+                    <h4>Operador local certificado</h4>
+                    <p>Conocemos cada rincón de Golfito y te ofrecemos experiencias auténticas y seguras.</p>
+                </div>
+                <div class="ventaja">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Turismo sostenible</h4>
+                    <p>Promovemos el respeto por la naturaleza y las comunidades locales en cada tour.</p>
+                </div>
+                <div class="ventaja">
+                    <i class="fas fa-headset"></i>
+                    <h4>Atención personalizada</h4>
+                    <p>Soporte antes, durante y después de tu viaje. ¡Estamos para ayudarte!</p>
+                </div>
+                <div class="ventaja">
+                    <i class="fas fa-star"></i>
+                    <h4>Clientes satisfechos</h4>
+                    <p>Más de 1000 viajeros felices han confiado en nosotros para descubrir Golfito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonios-section">
+        <div class="container">
+            <h2>Testimonios</h2>
+            <div class="testimonios-grid">
+                <div class="testimonio">
+                    <p>"¡Una experiencia inolvidable! Los guías son expertos y la atención fue excelente. Recomiendo el tour de delfines."</p>
+                    <div class="nombre">María G.</div>
+                </div>
+                <div class="testimonio">
+                    <p>"Reservar fue fácil y seguro. Nos encantó la caminata nocturna y la biodiversidad que vimos."</p>
+                    <div class="nombre">Carlos V.</div>
+                </div>
+                <div class="testimonio">
+                    <p>"El mejor viaje familiar que hemos tenido. Todo muy bien organizado y personalizado."</p>
+                    <div class="nombre">Familia Rojas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo llegar -->
+    <section class="location" id="como-llegar">
+        <div class="container">
+            <h2>¿Cómo llegar a Golfito?</h2>
+            <div class="location-content">
+                <div class="location-info">
+                    <div class="transport-option">
+                        <div class="transport-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="transport-details">
+                            <h4>Por avión</h4>
+                            <p>Vuelos diarios desde San José al Aeropuerto de Golfito</p>
+                            <span class="duration">45 minutos</span>
+                        </div>
+                    </div>
+                    <div class="transport-option">
+                        <div class="transport-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="transport-details">
+                            <h4>Por carretera</h4>
+                            <p>Ruta San José - Golfito por la Carretera Interamericana</p>
+                            <span class="duration">6-7 horas</span>
+                        </div>
+                    </div>
+                    <div class="transport-option">
+                        <div class="transport-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="transport-details">
+                            <h4>En autobús</h4>
+                            <p>Servicios diarios desde Terminal Tracopa en San José</p>
+                            <span class="duration">8 horas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15766.123456789!2d-83.1667!3d8.6333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa61583c8b5b5b5%3A0x1234567890abcdef!2sGolfito%2C%20Costa%20Rica!5e0!3m2!1ses!2scr!4v1234567890123!5m2!1ses!2scr"
+                            width="100%" 
+                            height="400" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                        <div class="map-info">
+                            <h3>Golfito, Costa Rica</h3>
+                            <p>Ubicado en el Golfo Dulce, Península de Osa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preguntas Frecuentes (FAQ) -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">¿Cómo hago una reserva?</button>
+            <div class="faq-answer">
+              Puedes reservar cualquier tour directamente en nuestro sitio web, seleccionando el tour y completando el formulario de reserva. También puedes contactarnos por WhatsApp o correo electrónico.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">¿Qué métodos de pago aceptan?</button>
+            <div class="faq-answer">
+              Aceptamos pagos en efectivo, transferencia bancaria y SINPE Móvil. Pronto habilitaremos pagos con tarjeta.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">¿Puedo cancelar mi reserva?</button>
+            <div class="faq-answer">
+              Sí, puedes cancelar tu reserva hasta 72 horas antes del tour sin penalización. Cancelaciones tardías pueden tener cargos. Consulta nuestra política de cancelación para más detalles.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">¿Qué incluye el tour?</button>
+            <div class="faq-answer">
+              Cada tour incluye los servicios detallados en su descripción, como transporte, guía, entradas, alimentación y equipo, según corresponda.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">¿Es seguro para niños y familias?</button>
+            <div class="faq-answer">
+              Sí, la mayoría de nuestros tours son aptos para niños y familias. Consulta la descripción de cada tour para ver recomendaciones de edad o dificultad.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">¿Cómo contacto soporte?</button>
+            <div class="faq-answer">
+              Puedes contactarnos en cualquier momento por WhatsApp, correo electrónico o a través del formulario de contacto en la web. ¡Estamos para ayudarte!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                       <img src="assets/logo.png" alt="Golfito Tours" style="height: 40px; width: auto; margin-right: 0.5rem;">
+                        <span>Golfito Tours</span>
+                    </div>
+                    <p>Tu puerta de entrada a las maravillas naturales del Golfo Dulce</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1LRczrzZTy/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/vega_issac?igsh=b2hvcDNmYXgzMzNs" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/RodrigoChavesR?t=K74z99YIZzHXk-Oee3BDVg&s=08" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/watch?v=0ZVk-h8WSN0" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/qr/Y3TSTCLYVQQYE1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Tours</h4>
+                    <ul>
+                        <li><a href="naturaleza.html">Naturaleza</a></li>
+                        <li><a href="aventura.html">Aventura</a></li>
+                        <li><a href="playas.html">Playas</a></li>
+                        <li><a href="historia.html">Historia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="reserva.html">Reserva</a></li>
+                        <li><a href="#" onclick="abrirModal('modalTerminos')">Términos</a></li>
+                        <li><a href="#" onclick="abrirModal('modalPrivacidad')">Privacidad</a></li>
+                        <li><a href="#" onclick="abrirModal('modalFaq')">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +506 2775-0000</p>
+                        <p><i class="fas fa-envelope"></i> golfitotourstop@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Golfito, Puntarenas, Costa Rica</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Golfito Tours. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalLogin')">&times;</span>
+            
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="cambiarPestana('login')">
+                        Iniciar Sesión
+                    </button>
+                    <button class="auth-tab" onclick="cambiarPestana('register')">
+                        Registrarse
+                    </button>
+                    <button class="auth-tab" onclick="cambiarPestana('recuperacion')">
+                        Recuperar
+                    </button>
+                </div>
+
+                <!-- Formulario de Login -->
+                <form id="formularioLogin" class="auth-form">
+                    <h3>Iniciar Sesión</h3>
+                    
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+                        <div class="error-message" id="loginEmailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                        <div class="error-message" id="loginPasswordError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </button>
+                    
+                    <div class="enlace-recuperacion">
+                        <a href="#" onclick="cambiarPestana('recuperacion')">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </div>
+                </form>
+
+                <!-- Formulario de Registro -->
+                <form id="formularioRegistro" class="auth-form hidden">
+                    <h3>Crear Cuenta</h3>
+                    
+                    <div class="form-group">
+                        <input type="text" id="registerName" placeholder="Nombre completo" required>
+                        <div class="error-message" id="registerNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+                        <div class="error-message" id="registerEmailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="registerPassword" placeholder="Contraseña (mín. 6 caracteres)" required>
+                        <div class="error-message" id="registerPasswordError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Crear Cuenta
+                    </button>
+                </form>
+
+                <!-- Formulario de Recuperación -->
+                <form id="formularioRecuperacion" class="auth-form hidden">
+                    <h3>Recuperar Contraseña</h3>
+                    
+                    <div class="form-group">
+                        <input type="email" id="emailRecuperacion" placeholder="Correo electrónico" required>
+                        <div class="error-message" id="emailRecuperacionError"></div>
+                        <small class="form-help">
+                            Te enviaremos un enlace para restablecer tu contraseña
+                        </small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar Enlace
+                    </button>
+                    
+                    <div class="enlace-recuperacion">
+                        <a href="#" onclick="cambiarPestana('login')">
+                            Volver al inicio de sesión
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Tour -->
+    <div id="modalTour" class="modal">
+        <div class="modal-content large">
+            <span class="close" onclick="cerrarModal('modalTour')">&times;</span>
+            <div id="contenidoModalTour">
+                <!-- Contenido del tour se carga aquí -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación -->
+    <div id="notificacion" class="notification">
+        <span id="mensajeNotificacion"></span>
+        <button onclick="cerrarNotificacion()">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="auth-sistema.js"></script>
+</body>
+</html>
+

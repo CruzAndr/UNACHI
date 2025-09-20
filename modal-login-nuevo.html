@@ -1,0 +1,97 @@
+<!-- Modal de Login/Registro/Recuperación -->
+<div id="modalLogin" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal('modalLogin')">&times;</span>
+    
+    <div class="auth-container">
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="cambiarPestana('login')">
+          Iniciar Sesión
+        </button>
+        <button class="auth-tab" onclick="cambiarPestana('register')">
+          Registrarse
+        </button>
+        <button class="auth-tab" onclick="cambiarPestana('recuperacion')">
+          Recuperar
+        </button>
+      </div>
+
+      <!-- Formulario de Login -->
+      <form id="formularioLogin" class="auth-form">
+        <h3>Iniciar Sesión</h3>
+        
+        <div class="form-group">
+          <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+          <div class="error-message" id="loginEmailError"></div>
+        </div>
+        
+        <div class="form-group">
+          <input type="password" id="loginPassword" placeholder="Contraseña" required>
+          <div class="error-message" id="loginPasswordError"></div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+        </button>
+        
+        <div class="enlace-recuperacion">
+          <a href="#" onclick="cambiarPestana('recuperacion')">
+            ¿Olvidaste tu contraseña?
+          </a>
+        </div>
+      </form>
+
+      <!-- Formulario de Registro -->
+      <form id="formularioRegistro" class="auth-form hidden">
+        <h3>Crear Cuenta</h3>
+        
+        <div class="form-group">
+          <input type="text" id="registerName" placeholder="Nombre completo" required>
+          <div class="error-message" id="registerNameError"></div>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+          <div class="error-message" id="registerEmailError"></div>
+        </div>
+        
+        <div class="form-group">
+          <input type="password" id="registerPassword" placeholder="Contraseña (mín. 6 caracteres)" required>
+          <div class="error-message" id="registerPasswordError"></div>
+        </div>
+        
+        <div class="form-group">
+          <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+          <div class="error-message" id="confirmPasswordError"></div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-user-plus"></i> Crear Cuenta
+        </button>
+      </form>
+
+      <!-- Formulario de Recuperación -->
+      <form id="formularioRecuperacion" class="auth-form hidden">
+        <h3>Recuperar Contraseña</h3>
+        
+        <div class="form-group">
+          <input type="email" id="emailRecuperacion" placeholder="Correo electrónico" required>
+          <div class="error-message" id="emailRecuperacionError"></div>
+          <small class="form-help">
+            Te enviaremos un enlace para restablecer tu contraseña
+          </small>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> Enviar Enlace
+        </button>
+        
+        <div class="enlace-recuperacion">
+          <a href="#" onclick="cambiarPestana('login')">
+            Volver al inicio de sesión
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

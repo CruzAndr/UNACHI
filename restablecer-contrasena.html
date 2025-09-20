@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restablecer Contraseña - Golfito Tours</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .contenedor-restablecer {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+            padding: 20px;
+        }
+
+        .tarjeta-restablecer {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .encabezado-restablecer {
+            margin-bottom: 30px;
+        }
+
+        .encabezado-restablecer i {
+            font-size: 3rem;
+            color: #2d5a27;
+            margin-bottom: 15px;
+        }
+
+        .encabezado-restablecer h1 {
+            color: #2d5a27;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .encabezado-restablecer p {
+            color: #666;
+            margin: 0;
+        }
+
+        .formulario-restablecer {
+            text-align: left;
+        }
+
+        .grupo-formulario {
+            margin-bottom: 20px;
+        }
+
+        .grupo-formulario label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .contenedor-input-contrasena {
+            position: relative;
+        }
+
+        .contenedor-input-contrasena input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .contenedor-input-contrasena input:focus {
+            outline: none;
+            border-color: #2d5a27;
+        }
+
+        .alternar-contrasena {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .alternar-contrasena:hover {
+            color: #2d5a27;
+        }
+
+        .mensaje-error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .mensaje-error.mostrar {
+            display: block;
+        }
+
+        .btn-completo {
+            width: 100%;
+            padding: 15px;
+            background: #2d5a27;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-completo:hover {
+            background: #1e3d1b;
+        }
+
+        .btn-completo:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .pie-restablecer {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .enlace-volver {
+            color: #2d5a27;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .enlace-volver:hover {
+            text-decoration: underline;
+        }
+
+        .notificacion {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2d5a27;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            max-width: 350px;
+        }
+
+        .notificacion.mostrar {
+            transform: translateX(0);
+        }
+
+        .contenido-notificacion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cerrar-notificacion {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor-restablecer">
+        <div class="tarjeta-restablecer">
+            <div class="encabezado-restablecer">
+                <i class="fas fa-key"></i>
+                <h1>Restablecer Contraseña</h1>
+                <p>Ingresa tu nueva contraseña</p>
+            </div>
+            
+            <form id="formularioRestablecerContrasena" class="formulario-restablecer">
+                <div class="grupo-formulario">
+                    <label for="tokenRecuperacion">Token de recuperación</label>
+                    <input type="text" id="tokenRecuperacion" name="tokenRecuperacion" placeholder="Pega aquí tu token" required>
+                    <div class="mensaje-error" id="tokenRecuperacionError"></div>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="nuevaContrasena">Nueva Contraseña</label>
+                    <div class="contenedor-input-contrasena">
+                        <input type="password" id="nuevaContrasena" name="nuevaContrasena" required>
+                        <button type="button" class="alternar-contrasena" onclick="alternarContrasena('nuevaContrasena')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="mensaje-error" id="nuevaContrasenaError"></div>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="confirmarContrasena">Confirmar Contraseña</label>
+                    <div class="contenedor-input-contrasena">
+                        <input type="password" id="confirmarContrasena" name="confirmarContrasena" required>
+                        <button type="button" class="alternar-contrasena" onclick="alternarContrasena('confirmarContrasena')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="mensaje-error" id="confirmarContrasenaError"></div>
+                </div>
+                <button type="submit" class="btn-completo">
+                    <i class="fas fa-save"></i> Restablecer Contraseña
+                </button>
+            </form>
+            
+            <div class="pie-restablecer">
+                <a href="index.html" class="enlace-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al inicio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación -->
+    <div id="notificacion" class="notificacion">
+        <div class="contenido-notificacion">
+            <span id="mensajeNotificacion"></span>
+            <button onclick="cerrarNotificacion()" class="cerrar-notificacion">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Obtener token de la URL o del campo manual
+        const parametrosUrl = new URLSearchParams(window.location.search);
+        let token = parametrosUrl.get('token');
+
+        // Si no hay token en la URL, el usuario debe pegarlo manualmente
+        if (token) {
+            document.getElementById('tokenRecuperacion').value = token;
+            document.getElementById('tokenRecuperacion').readOnly = true;
+        } else {
+            document.getElementById('tokenRecuperacion').readOnly = false;
+        }
+
+        // Manejar formulario de restablecimiento
+        document.getElementById('formularioRestablecerContrasena').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            limpiarErrores();
+
+            // Obtener el token del campo si no está en la URL
+            let tokenFinal = document.getElementById('tokenRecuperacion').value.trim();
+            const nuevaContrasena = document.getElementById('nuevaContrasena').value;
+            const confirmarContrasena = document.getElementById('confirmarContrasena').value;
+
+            let valido = true;
+
+            if (!tokenFinal) {
+                mostrarError('tokenRecuperacion', 'El token es obligatorio');
+                valido = false;
+            }
+            if (nuevaContrasena.length < 6) {
+                mostrarError('nuevaContrasena', 'La contraseña debe tener al menos 6 caracteres');
+                valido = false;
+            }
+            if (nuevaContrasena !== confirmarContrasena) {
+                mostrarError('confirmarContrasena', 'Las contraseñas no coinciden');
+                valido = false;
+            }
+            if (!valido) return;
+
+            const botonEnviar = e.target.querySelector('button[type="submit"]');
+            const textoOriginal = botonEnviar.innerHTML;
+            botonEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Restableciendo...';
+            botonEnviar.disabled = true;
+
+            try {
+                const respuesta = await fetch('http://localhost:3000/api/auth/restablecer-contrasena', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        token: tokenFinal,
+                        nuevaContrasena: nuevaContrasena
+                    })
+                });
+
+                const datos = await respuesta.json();
+
+                if (datos.exito) {
+                    mostrarNotificacion('Contraseña restablecida exitosamente. Redirigiendo...');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    mostrarNotificacion(datos.mensaje || 'Error al restablecer contraseña');
+                }
+            } catch (error) {
+                mostrarNotificacion('Error de conexión. Intenta de nuevo.');
+            } finally {
+                botonEnviar.innerHTML = textoOriginal;
+                botonEnviar.disabled = false;
+            }
+        });
+
+        function alternarContrasena(inputId) {
+            const input = document.getElementById(inputId);
+            const icono = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icono.classList.remove('fa-eye');
+                icono.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icono.classList.remove('fa-eye-slash');
+                icono.classList.add('fa-eye');
+            }
+        }
+
+        function mostrarError(campo, mensaje) {
+            const elementoError = document.getElementById(campo + 'Error');
+            if (elementoError) {
+                elementoError.textContent = mensaje;
+                elementoError.classList.add('mostrar');
+            }
+        }
+
+        function limpiarErrores() {
+            const errores = document.querySelectorAll('.mensaje-error');
+            errores.forEach(error => {
+                error.classList.remove('mostrar');
+                error.textContent = '';
+            });
+        }
+
+        function mostrarNotificacion(mensaje) {
+            const notificacion = document.getElementById('notificacion');
+            const elementoMensaje = document.getElementById('mensajeNotificacion');
+
+            if (notificacion && elementoMensaje) {
+                elementoMensaje.textContent = mensaje;
+                notificacion.classList.add('mostrar');
+
+                setTimeout(() => {
+                    notificacion.classList.remove('mostrar');
+                }, 5000);
+            }
+        }
+
+        function cerrarNotificacion() {
+            const notificacion = document.getElementById('notificacion');
+            if (notificacion) {
+                notificacion.classList.remove('mostrar');
+            }
+        }
+    </script>
+</body>
+</html>

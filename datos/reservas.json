@@ -1,0 +1,24 @@
+[
+  {
+    "nombreCompleto": "isaac",
+    "emailReserva": "pokeranimu@gmail.com",
+    "telefonoReserva": "88888888",
+    "fechaTour": "2025-07-17",
+    "tourSeleccionado": "Observación de Aves",
+    "numeroPersonas": "3",
+    "horarioPreferido": "1:00 PM",
+    "comentariosReserva": "jrjjrjr",
+    "fechaCreacion": "2025-07-03T14:14:56.360Z"
+  },
+  {
+    "nombreCompleto": "isaac",
+    "emailReserva": "pokeranimu@gmail.com",
+    "telefonoReserva": "88888888",
+    "fechaTour": "2025-11-12",
+    "tourSeleccionado": "Senderismo Nocturno",
+    "numeroPersonas": "2",
+    "horarioPreferido": "10:00 AM",
+    "comentariosReserva": "",
+    "fechaCreacion": "2025-09-16T16:47:00.404Z"
+  }
+]

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu Tour - Golfito Turismo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--
+      Barra de navegación principal del sitio.
+      Permite acceder a las diferentes secciones y páginas.
+    -->
+    <nav class="navbar" id="barraNavegacion">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer;">
+                <img src="assets/logo.png" alt="Golfito Tours" style="height: 40px; width: auto; margin-right: 0.5rem;">
+                <span>Golfito Tours</span>
+            </div>
+            <div class="nav-menu" id="menuNavegacion">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="naturaleza.html" class="nav-link">Naturaleza</a>
+                <a href="aventura.html" class="nav-link">Aventura</a>
+                <a href="playas.html" class="nav-link">Playas</a>
+                <a href="historia.html" class="nav-link">Historia</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="reserva.html" class="nav-link active">Reserva</a>
+                <button class="btn-login" onclick="abrirModal('modalLogin')">
+                    <i class="fas fa-user"></i> Iniciar Sesión
+                </button>
+            </div>
+            <div class="hamburger" id="hamburguesa">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero de Reserva -->
+    <section class="page-hero reservation-hero">
+        <div class="hero-background" style="background-image: url('imagenes/golfito2.jpg');">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Reserva tu Aventura</h1>
+                <p>Completa el formulario y te contactaremos para confirmar tu tour</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Reserva -->
+    <section class="reservation-section">
+        <div class="container">
+            <div class="reservation-content">
+                <div class="reservation-info">
+                    <h2>¿Por qué reservar con nosotros?</h2>
+                    <p>Somos expertos locales con más de 15 años de experiencia en turismo sostenible en Golfito.</p>
+                    
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Seguridad garantizada</h4>
+                                <p>Guías certificados y equipo de seguridad de primera calidad</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <h4>Turismo sostenible</h4>
+                                <p>Comprometidos con la conservación del medio ambiente</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Grupos pequeños</h4>
+                                <p>Experiencias personalizadas con máximo 15 personas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Flexibilidad</h4>
+                                <p>Horarios adaptables y cancelación gratuita 24h antes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <h4>Experiencia local</h4>
+                                <p>Conocimiento profundo de la flora, fauna y cultura local</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reservation-form-container">
+                    <h3>Formulario de Reserva</h3>
+                    <form id="formularioReserva" class="reservation-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombreCompleto">Nombre completo *</label>
+                                <input type="text" id="nombreCompleto" name="nombreCompleto" required>
+                                <div class="error-message" id="nombreCompletoError"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emailReserva">Correo electrónico *</label>
+                                <input type="email" id="emailReserva" name="emailReserva" required>
+                                <div class="error-message" id="emailReservaError"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefonoReserva">Teléfono *</label>
+                                <input type="tel" id="telefonoReserva" name="telefonoReserva" required>
+                                <div class="error-message" id="telefonoReservaError"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fechaTour">Fecha del tour *</label>
+                                <input type="date" id="fechaTour" name="fechaTour" required>
+                                <div class="error-message" id="fechaTourError"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tourSeleccionado">Tour seleccionado *</label>
+                            <select id="tourSeleccionado" name="tourSeleccionado" required>
+                                <option value="">Selecciona un tour</option>
+                                <optgroup label="Tours de Naturaleza">
+                                    <option value="Avistamiento de Delfines">Avistamiento de Delfines - $45</option>
+                                    <option value="Senderismo Nocturno">Senderismo Nocturno - $40</option>
+                                    <option value="Observación de Aves">Observación de Aves - $35</option>
+                                    <option value="Tour de Manglares">Tour de Manglares - $38</option>
+                                    <option value="Caminata al Bosque Nuboso">Caminata al Bosque Nuboso - $55</option>
+                                </optgroup>
+                                <optgroup label="Tours de Aventura">
+                                    <option value="Canopy Adventure">Canopy Adventure - $65</option>
+                                    <option value="Kayak en Manglares">Kayak en Manglares - $50</option>
+                                    <option value="Rappel en Cascadas">Rappel en Cascadas - $75</option>
+                                    <option value="Pesca Deportiva">Pesca Deportiva - $120</option>
+                                    <option value="Rafting Río Coto">Rafting Río Coto - $85</option>
+                                </optgroup>
+                                <optgroup label="Tours de Playas">
+                                    <option value="Playa Cacao">Playa Cacao - $35</option>
+                                    <option value="Playa Zancudo">Playa Zancudo - $40</option>
+                                    <option value="Playa Pavones - Surf">Playa Pavones - Surf - $55</option>
+                                    <option value="Playa Blanca - Refugio Golfito">Playa Blanca - Refugio Golfito - $45</option>
+                                </optgroup>
+                                <optgroup label="Tours de Historia">
+                                    <option value="Antigua Zona Americana de Golfito">Antigua Zona Americana - $25</option>
+                                    <option value="Museo de la Cultura Bananera">Museo de la Cultura Bananera - $20</option>
+                                    <option value="Ferrocarril Bananero">Ferrocarril Bananero - $30</option>
+                                </optgroup>
+                            </select>
+                            <div class="error-message" id="tourSeleccionadoError"></div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="numeroPersonas">Número de personas *</label>
+                                <select id="numeroPersonas" name="numeroPersonas" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 personas</option>
+                                    <option value="3">3 personas</option>
+                                    <option value="4">4 personas</option>
+                                    <option value="5">5 personas</option>
+                                    <option value="6">6 personas</option>
+                                    <option value="7">7 personas</option>
+                                    <option value="8">8 personas</option>
+                                    <option value="9">9 personas</option>
+                                    <option value="10">10 personas</option>
+                                    <option value="mas">Más de 10 (especificar en comentarios)</option>
+                                </select>
+                                <div class="error-message" id="numeroPersonasError"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="horarioPreferido">Horario preferido</label>
+                                <select id="horarioPreferido" name="horarioPreferido">
+                                    <option value="">Selecciona un horario</option>
+                                    <option value="6:00 AM">6:00 AM</option>
+                                    <option value="7:00 AM">7:00 AM</option>
+                                    <option value="8:00 AM">8:00 AM</option>
+                                    <option value="9:00 AM">9:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="1:00 PM">1:00 PM</option>
+                                    <option value="2:00 PM">2:00 PM</option>
+                                    <option value="3:00 PM">3:00 PM</option>
+                                    <option value="4:00 PM">4:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comentariosReserva">Comentarios adicionales</label>
+                            <textarea id="comentariosReserva" name="comentariosReserva" rows="4" placeholder="Menciona cualquier requerimiento especial, alergias, nivel de experiencia, etc."></textarea>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="aceptarTerminos" name="aceptarTerminos" required>
+                                <span class="checkmark"></span>
+                                Acepto los <a href="#" onclick="abrirModal('modalTerminos')">términos y condiciones</a> y la <a href="#" onclick="abrirModal('modalPrivacidad')">política de privacidad</a>
+                            </label>
+                            <div class="error-message" id="aceptarTerminosError"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-calendar-check"></i> Enviar Reserva
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información Adicional -->
+    <section class="additional-info-section">
+        <div class="container">
+            <h2>Información importante</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Confirmación</h3>
+                    <p>Te contactaremos en las próximas 2 horas para confirmar disponibilidad y detalles del tour.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Pago</h3>
+                    <p>Aceptamos efectivo, tarjetas y transferencias. El pago se realiza el día del tour.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>Cancelación</h3>
+                    <p>Cancelación gratuita hasta 24 horas antes del tour. Sin penalidades por clima.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Qué traer</h3>
+                    <p>Ropa cómoda, zapatos cerrados, protector solar, repelente y cámara.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="Golfito Tours" style="height: 40px; width: auto; margin-right: 0.5rem;">
+                        <span>Golfito Tours</span>
+                    </div>
+                    <p>Tu puerta de entrada a las maravillas naturales del Golfo Dulce</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Páginas</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="naturaleza.html">Naturaleza</a></li>
+                        <li><a href="aventura.html">Aventura</a></li>
+                        <li><a href="playas.html">Playas</a></li>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +506 2775-0000</p>
+                        <p><i class="fas fa-envelope"></i> golfitotourstop@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Golfito, Puntarenas, Costa Rica</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1LRczrzZTy/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/vega_issac?igsh=b2hvcDNmYXgzMzNs" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/RodrigoChavesR?t=K74z99YIZzHXk-Oee3BDVg&s=08" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/watch?v=0ZVk-h8WSN0" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/qr/Y3TSTCLYVQQYE1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Golfito Tours. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalLogin')">&times;</span>
+            
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="cambiarPestana('login')">
+                        Iniciar Sesión
+                    </button>
+                    <button class="auth-tab" onclick="cambiarPestana('register')">
+                        Registrarse
+                    </button>
+                    <button class="auth-tab" onclick="cambiarPestana('recuperacion')">
+                        Recuperar
+                    </button>
+                </div>
+
+                <!-- Formulario de Login -->
+                <form id="formularioLogin" class="auth-form">
+                    <h3>Iniciar Sesión</h3>
+                    
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+                        <div class="error-message" id="loginEmailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                        <div class="error-message" id="loginPasswordError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </button>
+                    
+                    <div class="enlace-recuperacion">
+                        <a href="#" onclick="cambiarPestana('recuperacion')">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </div>
+                </form>
+
+                <!-- Formulario de Registro -->
+                <form id="formularioRegistro" class="auth-form hidden">
+                    <h3>Crear Cuenta</h3>
+                    
+                    <div class="form-group">
+                        <input type="text" id="registerName" placeholder="Nombre completo" required>
+                        <div class="error-message" id="registerNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+                        <div class="error-message" id="registerEmailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="registerPassword" placeholder="Contraseña (mín. 6 caracteres)" required>
+                        <div class="error-message" id="registerPasswordError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Crear Cuenta
+                    </button>
+                </form>
+
+                <!-- Formulario de Recuperación -->
+                <form id="formularioRecuperacion" class="auth-form hidden">
+                    <h3>Recuperar Contraseña</h3>
+                    
+                    <div class="form-group">
+                        <input type="email" id="emailRecuperacion" placeholder="Correo electrónico" required>
+                        <div class="error-message" id="emailRecuperacionError"></div>
+                        <small class="form-help">
+                            Te enviaremos un enlace para restablecer tu contraseña
+                        </small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar Enlace
+                    </button>
+                    
+                    <div class="enlace-recuperacion">
+                        <a href="#" onclick="cambiarPestana('login')">
+                            Volver al inicio de sesión
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación -->
+    <div id="notificacion" class="notification">
+        <span id="mensajeNotificacion"></span>
+        <button onclick="cerrarNotificacion()">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="auth-sistema.js"></script>
+</body>
+</html>
