@@ -1,0 +1,140 @@
+/*BOTON INICIO DE SESION*/
+/* Botón de login dinámico según la página */
+.btn-login {
+  background: var(--color-primario);
+  color: var(--blanco);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-weight: 500;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* los colores del boton login cambian según la pagina que se esté viendo*/
+body.page-naturaleza .btn-login {
+  background: var(--color-naturaleza);
+}
+
+body.page-aventura .btn-login {
+  background: var(--color-aventura);
+}
+
+body.page-playa .btn-login {
+  background: var(--color-playa);
+}
+
+body.page-historia .btn-login {
+  background: var(--color-historia);
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+
+/*MENÚ USUARIO*/
+
+/* Estilos para el menú de usuario desplegable */
+.menu-usuario {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 250px;
+  display: none;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-usuario-contenido {
+  padding: 20px;
+}
+
+.menu-usuario-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.menu-usuario-header i {
+  font-size: 2.5rem;
+  color: var(--color-primario);
+}
+
+.menu-usuario-nombre {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.menu-usuario-email {
+  font-size: 14px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.menu-usuario hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 15px 0;
+}
+
+.menu-usuario-item {
+  width: 100%;
+  padding: 12px 15px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.menu-usuario-item:hover {
+  background-color: #f8f9fa;
+}
+
+.menu-usuario-item i {
+  color: #666;
+  width: 16px;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--texto-oscuro);
+  margin: 3px 0;
+  transition: var(--transicion);
+}

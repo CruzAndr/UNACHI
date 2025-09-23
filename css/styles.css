@@ -1,0 +1,36 @@
+/* Reset y Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primario: #2d5a27;
+  --color-secundario: #4a7c59;
+  --color-acento: #8fbc8f;
+  --color-naturaleza: #228b22;
+  --color-aventura: #1e3a8a;
+  --color-playa: #0891b2;
+  --color-historia: #92400e;
+  --texto-oscuro: #2c3e50;
+  --texto-claro: #7f8c8d;
+  --blanco: #ffffff;
+  --fondo-claro: #f8f9fa;
+  --sombra: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --radio-borde: 8px;
+  --transicion: all 0.3s ease;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--texto-oscuro);
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
