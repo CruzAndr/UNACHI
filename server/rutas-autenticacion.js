@@ -25,7 +25,7 @@ class RutasAutenticacion {
         }
 
         const usuario = await this.gestorUsuarios.usuarioExiste(email)
-        
+
         res.json({
           exito: true,
           existe: !!usuario,
@@ -76,7 +76,7 @@ class RutasAutenticacion {
         })
       } catch (error) {
         console.error("❌ Error en login:", error.message)
-        
+
         if (error.message === "Contraseña incorrecta") {
           res.status(401).json({
             exito: false,
@@ -142,6 +142,21 @@ class RutasAutenticacion {
         })
 
         console.log("✅ Registro exitoso")
+
+        // Enviar correo a Odoo CRM
+        try {
+          await this.transportadorEmail.sendMail({
+            from: process.env.EMAIL_USER,
+            to: "info@assssa1.odoo.com", // <-- Cambia esta dirección por la de tu Odoo CRM
+            subject: "Nuevo registro de usuario (Sitio Web)",
+            text: `Nuevo usuario registrado:\n\nNombre: ${nuevoUsuario.nombre}\nEmail: ${nuevoUsuario.email}`,
+            html: `<h3>Nuevo usuario registrado</h3><ul><li><b>Nombre:</b> ${nuevoUsuario.nombre}</li><li><b>Email:</b> ${nuevoUsuario.email}</li></ul>`
+          })
+          console.log("✅ Correo enviado a Odoo CRM")
+        } catch (err) {
+          console.error("❌ Error enviando correo a Odoo CRM:", err.message)
+        }
+
         res.status(201).json({
           exito: true,
           mensaje: "Usuario registrado exitosamente",
@@ -149,7 +164,7 @@ class RutasAutenticacion {
         })
       } catch (error) {
         console.error("❌ Error en registro:", error.message)
-        
+
         if (error.message === "El usuario ya existe") {
           res.status(409).json({
             exito: false,
@@ -203,7 +218,7 @@ class RutasAutenticacion {
         });
       } catch (error) {
         console.error("❌ Error en recuperación:", error.message)
-        
+
         if (error.message === "Usuario no encontrado") {
           res.status(404).json({
             exito: false,
@@ -247,7 +262,7 @@ class RutasAutenticacion {
         })
       } catch (error) {
         console.error("❌ Error restableciendo contraseña:", error.message)
-        
+
         if (error.message.includes("Token")) {
           res.status(400).json({
             exito: false,
