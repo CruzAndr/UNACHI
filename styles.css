@@ -738,8 +738,11 @@ section h2 {
   max-width: 750px;
   padding: 0;
   border-radius: 16px;
-  overflow: hidden;
+  overflow: auto;
   background: #fff;
+  max-height: 90vh;   /* límite de altura del modal en pantalla */
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
@@ -756,12 +759,18 @@ section h2 {
 
 /* MODAL DE TOUR MEJORADO */
 .tour-detail {
+  max-height: 80vh;   /* ocupa máximo el 80% de la altura de la ventana */
+  overflow-y: auto; 
   padding: 2rem;
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
 }
 
 .tour-detail-header {
   width: 100%;
   height: 300px;
+  flex-shrink: 0;
   overflow: hidden;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -776,6 +785,7 @@ section h2 {
 
 .tour-detail-info {
   padding: 32px 32px 16px 32px;
+  flex-shrink: 0;
   background: #fff;
 }
 
@@ -803,6 +813,8 @@ section h2 {
 .tour-detail-body {
   padding: 0 32px 24px 32px;
   background: #fff;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .tour-includes {
@@ -822,6 +834,7 @@ section h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-shrink: 0;
     justify-content: center;
     margin-top: 1.2rem;
     gap: 0.7rem;
@@ -2204,14 +2217,24 @@ textarea:focus-visible {
 
 /* === BUSCADOR DE TOURS EN HERO === */
 .hero-busqueda {
-    background: linear-gradient(120deg, #2d5a27 60%, #4a7c59 100%), url('imagenes/golfito2.jpg') center/cover no-repeat;
-    min-height: 480px;
     display: flex;
-    align-items: center;
+    flex-direction: column; 
+    align-items: stretch;   
     justify-content: center;
+    min-height: 480px;
     position: relative;
     color: #fff;
+    padding-bottom: 2rem;  
+    overflow: hidden; 
 }
+
+.hero-wrapper {
+    background: rgba(30, 61, 27, 1);
+    position: relative;
+    padding-bottom: 2%;
+    color: #fff;
+}
+
 .hero-busqueda .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -2226,10 +2249,11 @@ textarea:focus-visible {
     margin: 0 auto;
 }
 .logo-hero {
-    margin-bottom: 1.5rem;
+    margin-top: 20px;  
+    margin-bottom: 2rem;
 }
 .logo-hero img {
-    height: 70px;
+    height: 90px;
     width: auto;
 }
 .hero-busqueda h1 {
@@ -2276,9 +2300,20 @@ textarea:focus-visible {
     background: #1e3d1b;
 }
 #resultadosBuscador {
-    margin-top: 1.5rem;
-    min-height: 40px;
+    margin: 2rem auto 0 auto;
+    padding: 0 1rem;
+    width: 75%; /*tamaño del ancho de cada card*/
+    max-width: 1000px; 
 }
+
+#resultadosBuscador .tours-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important; /*orden 3 resultados de búsqueda en 1 línea*/
+    gap: 1.5rem;
+    width: 100%;
+    
+}
+
 @media (max-width: 900px) {
     #formBuscadorTours {
         flex-direction: column;

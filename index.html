@@ -32,6 +32,7 @@
     </script>
 
     <!-- HERO con buscador -->
+    <div class="hero-wrapper">
     <section class="hero-busqueda">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -52,12 +53,15 @@
                 <input type="number" id="buscadorPersonas" min="1" max="20" placeholder="Personas">
                 <button type="submit"><i class="fas fa-search"></i> Buscar tours</button>
             </form>
-            <div id="resultadosBuscador">
-              <!-- Aquí se insertan los resultados de la búsqueda con JS -->
-              <button id="btnToggleTours" class="btn btn-outline" style="display:none; margin: 18px auto 0 auto;">Ocultar resultados</button>
-            </div>
         </div>
     </section>
+
+    <div id="resultadosBuscador">
+        <div class="tours-grid"></div>
+        <!-- Aquí se insertan los resultados de la búsqueda con JS -->
+        <button id="btnToggleTours" class="btn btn-outline" style="display:none; margin: 18px auto 0 auto;">Ocultar resultados</button>
+    </div>
+    </div>
 
     <!-- Carrusel de Fotos -->
     <section class="foto-carousel-section">
@@ -328,9 +332,6 @@
                     </button>
                     <button class="auth-tab" onclick="cambiarPestana('register')">
                         Registrarse
-                    </button>
-                    <button class="auth-tab" onclick="cambiarPestana('recuperacion')">
-                        Recuperar
                     </button>
                 </div>
 

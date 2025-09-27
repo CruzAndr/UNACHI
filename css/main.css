@@ -1,5 +1,5 @@
 .hero-busqueda {
-    background: linear-gradient(120deg, #2d5a27 60%, #4a7c59 100%), url('../imagenes/golfito2.jpg') center/cover no-repeat;
+    background: linear-gradient(to bottom, rgba(30, 61, 27, 0.5) 60%, rgba(30, 61, 27, 1) 100%), url('../imagenes/golfito2.jpg') center/cover no-repeat;
     min-height: 480px;
     display: flex;
     align-items: center;
