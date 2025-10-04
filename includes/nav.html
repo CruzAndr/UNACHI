@@ -1,0 +1,27 @@
+<!--Barra de navegación compartida entre enlaces-->
+
+<nav class="navbar" id="barraNavegacion">
+    <div class="nav-container">
+        <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer;">
+            <img src="assets/logo.png" alt="Golfito Tours" style="height: 40px; width: auto; margin-right: 0.5rem;">
+            <span>Golfito Tours</span>
+        </div>
+        <div class="nav-menu" id="menuNavegacion">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="naturaleza.html" class="nav-link">Naturaleza</a>
+            <a href="aventura.html" class="nav-link">Aventura</a>
+            <a href="playas.html" class="nav-link">Playas</a>
+            <a href="historia.html" class="nav-link">Historia</a>
+            <a href="contacto.html" class="nav-link">Contacto</a>
+            <a href="reserva.html" class="nav-link">Reserva</a>
+            <button class="btn-login" onclick="abrirModal('modalLogin')">
+                <i class="fas fa-user"></i> Iniciar Sesión
+            </button>
+        </div>
+        <div class="hamburger" id="hamburguesa">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>

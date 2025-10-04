@@ -4,175 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golfito Tours - Reserva tu Aventura</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .hero-busqueda {
-            background: linear-gradient(120deg, #2d5a27 60%, #4a7c59 100%), url('imagenes/golfito2.jpg') center/cover no-repeat;
-            min-height: 480px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            color: #fff;
-        }
-        .hero-busqueda .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(30, 61, 27, 0.55);
-            z-index: 1;
-        }
-        .hero-busqueda .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .hero-busqueda .logo-hero {
-            margin-bottom: 1.5rem;
-        }
-        .hero-busqueda .logo-hero img {
-            height: 70px;
-            width: auto;
-        }
-        .hero-busqueda h1 {
-            font-size: 2.7rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-        .hero-busqueda p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-        .buscador-tours {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-            padding: 18px 24px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-            justify-content: center;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-        .buscador-tours select, .buscador-tours input {
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 10px 12px;
-            font-size: 1rem;
-            min-width: 140px;
-        }
-        .buscador-tours button {
-            background: #2d5a27;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            padding: 12px 22px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .buscador-tours button:hover {
-            background: #1e3d1b;
-        }
-        .ventajas-section {
-            background: #f7faf7;
-            padding: 48px 0 32px 0;
-        }
-        .ventajas-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        .ventaja {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-            padding: 28px 24px;
-            max-width: 320px;
-            text-align: center;
-        }
-        .ventaja i {
-            font-size: 2.2rem;
-            color: #2d5a27;
-            margin-bottom: 0.7rem;
-        }
-        .ventaja h4 {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-        .testimonios-section {
-            background: #eaf4ea;
-            padding: 40px 0 32px 0;
-        }
-        .testimonios-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-        .testimonio {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-            padding: 24px 20px;
-            max-width: 320px;
-            text-align: left;
-        }
-        .testimonio .nombre {
-            font-weight: 700;
-            color: #2d5a27;
-        }
-        @media (max-width: 900px) {
-            .ventajas-grid, .testimonios-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .buscador-tours {
-                flex-direction: column;
-                gap: 0.7rem;
-            }
-        }
-    </style>
+
+
 </head>
 <body>
     <!--
       Barra de navegación principal del sitio.
       Permite acceder a las diferentes secciones y páginas.
+      Se accede al nav global por medio del fetch
     -->
-    <nav class="navbar" id="barraNavegacion">
-        <div class="nav-container">
-            <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer;">
-                <img src="assets/logo.png" alt="Golfito Tours" style="height: 40px; width: auto; margin-right: 0.5rem;">
-                <span>Golfito Tours</span>
-            </div>
-            <div class="nav-menu" id="menuNavegacion">
-                <a href="index.html" class="nav-link active">Inicio</a>
-                <a href="naturaleza.html" class="nav-link">Naturaleza</a>
-                <a href="aventura.html" class="nav-link">Aventura</a>
-                <a href="playas.html" class="nav-link">Playas</a>
-                <a href="historia.html" class="nav-link">Historia</a>
-                <a href="contacto.html" class="nav-link">Contacto</a>
-                <a href="reserva.html" class="nav-link">Reserva</a>
-                <button class="btn-login" onclick="abrirModal('modalLogin')">
-                    <i class="fas fa-user"></i> Iniciar Sesión
-                </button>
-            </div>
-            <div class="hamburger" id="hamburguesa">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <div id="nav-placeholder"></div>
+
+    <script>
+        fetch('includes/nav.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('nav-placeholder').innerHTML = data;
+        });
+    </script>
 
     <!-- HERO con buscador -->
+    <div class="hero-wrapper">
     <section class="hero-busqueda">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -193,12 +53,15 @@
                 <input type="number" id="buscadorPersonas" min="1" max="20" placeholder="Personas">
                 <button type="submit"><i class="fas fa-search"></i> Buscar tours</button>
             </form>
-            <div id="resultadosBuscador">
-              <!-- Aquí se insertan los resultados de la búsqueda con JS -->
-              <button id="btnToggleTours" class="btn btn-outline" style="display:none; margin: 18px auto 0 auto;">Ocultar resultados</button>
-            </div>
         </div>
     </section>
+
+    <div id="resultadosBuscador">
+        <div class="tours-grid"></div>
+        <!-- Aquí se insertan los resultados de la búsqueda con JS -->
+        <button id="btnToggleTours" class="btn btn-outline" style="display:none; margin: 18px auto 0 auto;">Ocultar resultados</button>
+    </div>
+    </div>
 
     <!-- Carrusel de Fotos -->
     <section class="foto-carousel-section">
@@ -469,9 +332,6 @@
                     </button>
                     <button class="auth-tab" onclick="cambiarPestana('register')">
                         Registrarse
-                    </button>
-                    <button class="auth-tab" onclick="cambiarPestana('recuperacion')">
-                        Recuperar
                     </button>
                 </div>
 

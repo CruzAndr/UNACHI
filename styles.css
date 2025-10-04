@@ -1,255 +1,3 @@
-/* Reset y Variables */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --color-primario: #2d5a27;
-  --color-secundario: #4a7c59;
-  --color-acento: #8fbc8f;
-  --color-naturaleza: #228b22;
-  --color-aventura: #1e3a8a;
-  --color-playa: #1e3a8a;
-  --color-historia: #92400e;
-  --texto-oscuro: #2c3e50;
-  --texto-claro: #7f8c8d;
-  --blanco: #ffffff;
-  --fondo-claro: #f8f9fa;
-  --sombra: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --radio-borde: 8px;
-  --transicion: all 0.3s ease;
-}
-
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: var(--texto-oscuro);
-  overflow-x: hidden;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Navegación - FIJA Y CONSISTENTE */
-.navbar {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--sombra);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: var(--transicion);
-  height: 70px;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 100%;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--color-primario);
-  text-decoration: none;
-}
-
-.nav-logo i {
-  margin-right: 0.5rem;
-  font-size: 1.8rem;
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  height: 100%;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: var(--texto-oscuro);
-  font-weight: 500;
-  transition: var(--transicion);
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.nav-link:hover {
-  color: var(--color-primario);
-}
-
-.nav-link:hover::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--color-primario);
-}
-
-.nav-link.active {
-  color: var(--color-primario);
-  font-weight: 600;
-}
-
-/* Botón de login dinámico según la página */
-.btn-login {
-  background: var(--color-primario);
-  color: var(--blanco);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radio-borde);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  font-weight: 500;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  position: relative;
-}
-
-/* Colores dinámicos para el botón de login */
-body.page-naturaleza .btn-login {
-  background: var(--color-naturaleza);
-  transition: background-color 0.2s ease !important;
-}
-
-body.page-aventura .btn-login {
-  background: var(--color-aventura);
-  transition: background-color 0.2s ease !important;
-}
-
-body.page-playa .btn-login {
-  background: var(--color-playa);
-  transition: background-color 0.2s ease !important;
-}
-
-body.page-historia .btn-login {
-  background: var(--color-historia);
-  transition: background-color 0.2s ease !important;
-}
-
-.btn-login:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-  transition: all 0.2s ease;
-}
-
-/* Estilos para el menú de usuario desplegable */
-.menu-usuario {
-  position: fixed;
-  top: 70px;
-  right: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  min-width: 250px;
-  display: none;
-  animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.menu-usuario-contenido {
-  padding: 20px;
-}
-
-.menu-usuario-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-}
-
-.menu-usuario-header i {
-  font-size: 2.5rem;
-  color: var(--color-primario);
-}
-
-.menu-usuario-nombre {
-  font-weight: 600;
-  color: #333;
-  font-size: 16px;
-}
-
-.menu-usuario-email {
-  font-size: 14px;
-  color: #666;
-  margin-top: 2px;
-}
-
-.menu-usuario hr {
-  border: none;
-  border-top: 1px solid #eee;
-  margin: 15px 0;
-}
-
-.menu-usuario-item {
-  width: 100%;
-  padding: 12px 15px;
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: #333;
-}
-
-.menu-usuario-item:hover {
-  background-color: #f8f9fa;
-}
-
-.menu-usuario-item i {
-  color: #666;
-  width: 16px;
-}
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: var(--texto-oscuro);
-  margin: 3px 0;
-  transition: var(--transicion);
-}
 
 /* Hero */
 .hero {
@@ -990,8 +738,11 @@ section h2 {
   max-width: 750px;
   padding: 0;
   border-radius: 16px;
-  overflow: hidden;
+  overflow: auto;
   background: #fff;
+  max-height: 90vh;   /* límite de altura del modal en pantalla */
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
@@ -1008,12 +759,18 @@ section h2 {
 
 /* MODAL DE TOUR MEJORADO */
 .tour-detail {
+  max-height: 80vh;   /* ocupa máximo el 80% de la altura de la ventana */
+  overflow-y: auto; 
   padding: 2rem;
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
 }
 
 .tour-detail-header {
   width: 100%;
   height: 300px;
+  flex-shrink: 0;
   overflow: hidden;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1028,6 +785,7 @@ section h2 {
 
 .tour-detail-info {
   padding: 32px 32px 16px 32px;
+  flex-shrink: 0;
   background: #fff;
 }
 
@@ -1055,6 +813,8 @@ section h2 {
 .tour-detail-body {
   padding: 0 32px 24px 32px;
   background: #fff;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .tour-includes {
@@ -1074,6 +834,7 @@ section h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-shrink: 0;
     justify-content: center;
     margin-top: 1.2rem;
     gap: 0.7rem;
@@ -1490,17 +1251,6 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.page-hero .hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .page-hero .hero-overlay {
@@ -2467,14 +2217,24 @@ textarea:focus-visible {
 
 /* === BUSCADOR DE TOURS EN HERO === */
 .hero-busqueda {
-    background: linear-gradient(120deg, #2d5a27 60%, #4a7c59 100%), url('imagenes/golfito2.jpg') center/cover no-repeat;
-    min-height: 480px;
     display: flex;
-    align-items: center;
+    flex-direction: column; 
+    align-items: stretch;   
     justify-content: center;
+    min-height: 480px;
     position: relative;
     color: #fff;
+    padding-bottom: 2rem;  
+    overflow: hidden; 
 }
+
+.hero-wrapper {
+    background: rgba(30, 61, 27, 1);
+    position: relative;
+    padding-bottom: 2%;
+    color: #fff;
+}
+
 .hero-busqueda .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -2489,10 +2249,11 @@ textarea:focus-visible {
     margin: 0 auto;
 }
 .logo-hero {
-    margin-bottom: 1.5rem;
+    margin-top: 20px;  
+    margin-bottom: 2rem;
 }
 .logo-hero img {
-    height: 70px;
+    height: 90px;
     width: auto;
 }
 .hero-busqueda h1 {
@@ -2539,9 +2300,20 @@ textarea:focus-visible {
     background: #1e3d1b;
 }
 #resultadosBuscador {
-    margin-top: 1.5rem;
-    min-height: 40px;
+    margin: 2rem auto 0 auto;
+    padding: 0 1rem;
+    width: 75%; /*tamaño del ancho de cada card*/
+    max-width: 1000px; 
 }
+
+#resultadosBuscador .tours-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important; /*orden 3 resultados de búsqueda en 1 línea*/
+    gap: 1.5rem;
+    width: 100%;
+    
+}
+
 @media (max-width: 900px) {
     #formBuscadorTours {
         flex-direction: column;

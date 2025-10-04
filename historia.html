@@ -4,39 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tours de Historia - Golfito Turismo</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body class="page-historia">
     <!--
       Barra de navegación principal del sitio.
       Permite acceder a las diferentes secciones y páginas.
     -->
-    <nav class="navbar" id="barraNavegacion">
-        <div class="nav-container">
-            <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer;">
-                <img src="assets/logo.png" alt="Golfito Tours" style="height: 40px; width: auto; margin-right: 0.5rem;">
-                <span>Golfito Tours</span>
-            </div>
-            <div class="nav-menu" id="menuNavegacion">
-                <a href="index.html" class="nav-link">Inicio</a>
-                <a href="naturaleza.html" class="nav-link">Naturaleza</a>
-                <a href="aventura.html" class="nav-link">Aventura</a>
-                <a href="playas.html" class="nav-link">Playas</a>
-                <a href="historia.html" class="nav-link active">Historia</a>
-                <a href="contacto.html" class="nav-link">Contacto</a>
-                <a href="reserva.html" class="nav-link">Reserva</a>
-                <button class="btn-login" onclick="abrirModal('modalLogin')">
-                    <i class="fas fa-user"></i> Iniciar Sesión
-                </button>
-            </div>
-            <div class="hamburger" id="hamburguesa">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <div id="nav-placeholder"></div>
+
+    <script>
+        fetch('includes/nav.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('nav-placeholder').innerHTML = data;
+        });
+    </script>
+
 
     <!-- Hero de Historia -->
     <section class="page-hero history-hero">
@@ -182,9 +173,6 @@
                     </button>
                     <button class="auth-tab" onclick="cambiarPestana('register')">
                         Registrarse
-                    </button>
-                    <button class="auth-tab" onclick="cambiarPestana('recuperacion')">
-                        Recuperar
                     </button>
                 </div>
 
