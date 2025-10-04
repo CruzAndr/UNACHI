@@ -22,5 +22,13 @@
     "password": "$2b$10$9FQomkiqwwC0wUdf0qshxu.KkPN9zELC8Ga0/PwoI11z6hAbqDv6W",
     "fechaCreacion": "2025-07-03T07:24:29.405Z",
     "activo": true
+  },
+  "andreycor44@gmail.com": {
+    "id": 4,
+    "nombre": "Agian",
+    "email": "andreycor44@gmail.com",
+    "password": "$2b$10$hasqrVSuqANom3Ky6.yPveMw2hTVlfX6ujNlVmzeq7YTgifSA8iym",
+    "fechaCreacion": "2025-09-22T16:38:35.902Z",
+    "activo": true
   }
 }
